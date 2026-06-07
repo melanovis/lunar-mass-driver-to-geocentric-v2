@@ -26,7 +26,13 @@ Informing this decision can only partially be done by orbital mechanics alone. M
 These include:
 - Ejection velocity (v), the speed of material leaving the end of the MD relative to the stationary lunar surface.
 - Orientation, or the azimuth (θ) and elevation (ε) we can point an MD at.
-- Location, the latitude (φ) and longitude (λ) on the moon where we place the mouth of the MD. 
+- Location, the latitude (φ) and longitude (λ) on the moon where we place the mouth of the MD.
+The following animation takes a look at how changing even a single one of these parameters, the gun's azimuth, changes the resultant trajectory across the lunar orbit.
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/b09fe545-f1f8-49b0-bcb6-67b752b64ed6" width="100%" controls></video>
+</p>
+
 To gauge how an MDR transit constellation will behave for a single MD we must hold orientation and location fixed as the MD cannot change its aim or move along the lunar surface given its scale. But then how will we know if there are spots on the lunar surface which are preferred by the orbital mechanics of cislunar transiting? 
 In order to answer this question we decided to split this simulation project into two phases. The first phase, which we’ll call the ‘allocation phase’ would have far less samples and leave these parameters free. We’ll then look at where the optimisation system places the MDs for each true anomaly-omega sample and if any patterns or rough regions emerge we’ll use those, along with further terrain feature justifications to pick a location and orientation for the more major ‘fixed phase’ where only the ejection velocity will be a free parameter.
 
@@ -44,15 +50,22 @@ The resulting transits are shown all together in this animation, note the red ve
   <video src="https://github.com/user-attachments/assets/c887a5b7-3af5-41e3-af79-ee0dd0c395b2" width="100%" controls></video>
 </p>
 
-allocation phase results
+These plots show where these optimized transits ended up on the lunar surface.
 <img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/d9c5ac32-0736-4b53-a75b-013e4f76a621" />
 <img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/906670dc-3374-4a6a-b804-2e44176b55c7" />
 
+Unfortunately there are no real patterns to discern here except a vague preference to the lunar west. Theres this vague spot in the middle but all of these transits were for when the lunar and target orbital planes were aligned so its not very representative.  
+What this shows us is that with multiburn, its likely that the location of the MD is not a very sensitive criteria, in fact it doesn’t seem to be that important unless you go out of your way to pick a bad spot, like near the poles where transits will, on average, have to negotiate more inclination changes when exiting the lunar sphere of influence. It seems multiburn kind of allows us to ‘smooth out’ the performance of various MD spots across the lunar west such that everything can kind of perform the same in terms of Δv. 
+We’ll pick an MD launch spot roughly in this region (the grey disk centered on the average with a radius of a standard deviation of location separation), but its quite a wide region. More justification than this will be required for the fixed MD simulation phase.
 
+To pick a spot for a MD the complexity of MDRs have to be considered, rather their far increased complexity in comparison to what we usually expect when discussing MD-launched mass, that being relatively homogenous raw materials such as blocks of iron, bundles of titanium rods, or packaged regolith bricks. It makes sense for a MD focused on one specific export to be placed as close as possible to where its mined. All else being equal it can be expected that the best place for an MD is to be right next to the manufacturing centers they export from. Note that MDRs are not homogenous blocks of material either, they’re rockets with electronics, plumbing, thermal materials, carefully optimised actuators, etc. They’re going to have many material dependencies, in fact its likely safe to assume that likely all the readily available lunar minerals will be incorporated into the design of these MDRs in some way or another. 
+This means the manufacturing centers for these MDRs should be in very close proximity to various refining sites. If a site which has good simultaneous abundances in various useful materials can be found, it can be proposed that mining, refining, MDR manufacturing and massdriving can occur all on that site without expending additional energy to ship material around.
 
-prime abundance spots
+So how are these sites found? This project looks at nine remote-sensing abundance maps from various papers and then took the gradient of lunar heightmap to indicate terrain flatness. A PSO system which tweaks the threshold of each map, eg saying ‘only show me sites in the top x percentile of abundance this mineral’. This system then combines all these maps and continues to tweak each threshold until it maximises the mean abundance of each material while also minimizing terrain flatness. The results are the following spots.
+
 <img width="4836" height="2068" alt="Image" src="https://github.com/user-attachments/assets/6cc8b7fe-d4f6-43fc-a582-8c58fdd56290" />
 
+Anyways this is far better and more specific than the results of the allocation phase so we went with these for the major fixed simulation phase. We decided to pick kepler abundantia tertia (or KAT) as the launch spot. 
 
 parameters
 <img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/f475c505-61a3-412f-962a-739d34018082" />
@@ -63,4 +76,4 @@ histogram
 
 
 
-No AI was used in the making of this project
+Absolutely no AI was used in the making of this project
