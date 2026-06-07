@@ -1,10 +1,8 @@
 # lunar-mass-driver-to-geocentric-v2
 
-
-
 <img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/53b61856-a958-4223-b21c-2041cd78b08a" />
 
-This was a project aimed at illuminating what Δv and T/W requirements are imposed on commercial rockets travelling from the moon to the earth. Specifically these are rockets which are launched from a lunar massdriver (MD) or some equivalent lifting vehicle. This is the third in two previous attempts to understand this problem which failed to consider various orbital effects such as lunar libration, the eccentricty of the lunar orbit and precession of the target orbit.
+This was a project aimed at illuminating what Δv and T/W requirements are imposed on commercial rockets travelling from the moon to the earth. Specifically these are rockets which are launched from a lunar massdriver (MD) or some equivalent lifting vehicle (which we'll all just bring under the umbrella of 'MD' this overview). This is the third in two previous attempts, commissioned by the Anthrofuturism youtube channel, to understand this problem which failed to consider various orbital effects such as lunar libration, the eccentricty of the lunar orbit and precession of the target orbit.
 
 These are rockets which travel across cislunar space, executing multiple burns to eventually arrive at a circular parking orbit. After remaining there for some time they burn to rendezvous with a recieving station where their cargo payloads are seperated and the rockets are melted down into useful mass. This is the unidirectional MDR architecture, which is suspected as economically plausible due to the substantially reduced cost and complexity required for these lunar-ISRU derived rockets (likely Al+O2 redox) which do not need to negotiate earth's highly disagreeable atmosphere. These are more comparable to flying shipping containers than the fiery launch vehicles of our current period.
 
@@ -27,6 +25,7 @@ These include:
 - Ejection velocity (v), the speed of material leaving the end of the MD relative to the stationary lunar surface.
 - Orientation, or the azimuth (θ) and elevation (ε) we can point an MD at.
 - Location, the latitude (φ) and longitude (λ) on the moon where we place the mouth of the MD.
+
 The following animation takes a look at how changing even a single one of these parameters, the gun's azimuth, changes the resultant trajectory across the lunar orbit.
 
 <p align="center">
@@ -65,19 +64,38 @@ So how are these sites found? This project looks at nine remote-sensing abundanc
 
 <img width="4836" height="2068" alt="Image" src="https://github.com/user-attachments/assets/6cc8b7fe-d4f6-43fc-a582-8c58fdd56290" />
 
-Anyways this is far better and more specific than the results of the allocation phase so we went with these for the major fixed simulation phase. We decided to pick kepler abundantia tertia (or KAT) as the launch spot which sits at -34.78° longitude, 9.38° latitude. 
+These are more specific than the results of the allocation phase so we went with these for the major fixed simulation phase. We decided to pick kepler abundantia tertia (or KAT) as the launch spot which sits at -34.78° longitude, 9.38° latitude. 
 For the orientation of the gun in the fixed simulation phase, the allocation phase elevations were averaged to 0.0148° and the azimuth was set at 45° such that the ejection velocity can be used to control the degree to which our ejection trajectories are retrograde or inclined to the lunar orbital plane upon departure from the lunar sphere of influence (SOI).
 
-Following the allocation phase simulations, it was suspected that a Δv of 4km/s would be imposed as a limit for the fixed phase, if an optimised transit could not fall under 4km/s (while also staying within a T/W ratio boundary) then it would be discarded to search elsewhere in the search space.
+Following the allocation phase simulations, it was suspected that a Δv of 4km/s would be imposed as a limit for the fixed phase, if an optimised transit could not fall under 4km/s (while also staying within a T/W ratio boundary) then it would be discarded to explore elsewhere in the search space.
 
-The allocation phase was sampled on a rather low resolution, only 64 transits for it. In this fixed phase I decided to sample the lunar ν and target orbit Ω landscape more finely to confirm the validity of the 4km/s assumption. We optimized 270 multiburn transits, ten different Ω samples for each day of the lunar orbit. 
+The allocation phase was sampled on a rather low resolution, only 64 transits for it. In this fixed phase I decided to sample the lunar ν and target orbit Ω landscape more finely to confirm the validity of the 4km/s hypothesis. We optimized 270 multiburn transits, ten different Ω samples for each day of the lunar orbit. 
 
+The following animations show these transits all together.
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/375071bb-a4b3-413d-8a22-57188a304904" width="100%" controls></video>
+</p>
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/180306aa-bd20-4a7c-95eb-9f29c3fec401" width="100%" controls></video>
+</p>
+
+This plot shows the primary high-level parameters of these multiburn transits, proving the hypothesis of 4km/s being a limit for continuous access to LEO.
 <img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/f475c505-61a3-412f-962a-739d34018082" />
 
-histogram
+Heres a histogram showing the distribution of these parameters
 <img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/c31bd526-2cba-4850-af04-ba3903861afd" />
 
+Now, lets finally state what these results mean. We can now say, with a reasonable degree of confidence that:
+To reach a 1371.2 km target orbit in LEO when launching anytime from KAT on the moon, regardless of the orbital conditions a transiting MDR requires:
+- 2.33 - 3 km/s ejection velocity
+- Δv in the range of 3-4 km/s (not including margins or additional 100m/s Δv to rendezvous with the receiving station).
+- The capacity to throttle up to a T/W ratio of 4*
+*yes the histogram has T/W entries above this. This large T/W requirement comes from the speed the final LEO circularisation burn has to be completed in. I picked a 3 degree impulsive assumption for this, which is probably too conservative. Instead a 5 degree impulsive assumption is more likely. Furthermore this T/W limit seems to be something we have a lot more optimisation control over than Δv, so it seems very reasonable that future real-world optimisation projects can confirm that a maximum T/W of 4 is okay. 
 
+This shows that a lunar continous access massdriver (CAM) is very much possible. Mass can be constantly exported to the emerging macro-infrastructure markets of LEO constantly like a railway like. These are very much nontrivial Δv and T/W figures, but they are not outside the reasonable bounds of application for something like a potentially radically inexpensive aluminum oxygen thruster operating at an isp of something like 230 seconds. 
 
+Furthermore these results are the worst they’re ever going to be. As markets move further out of LEO, into MEO and beyond its reasonable to expect the CAM-MDR Δv landscape to become even less. The rockets will require smaller mass ratios meaning it becomes even more inexpensive to ship material as the market evolves over time. In multiburn the same MD can additionally service a whole multitude of orbital ranges too, even providing transits out into deep space by carefully controlling the ejection velocity such that transiting rockets re-enter the lunar sphere of influence for an outgoing gravity assist which, again, can be done independent of orbital conditions. Thus the lunar MD is an asset which can only appreciate in value over time. As more powerplant and MDR manufacturing infrastructure can be purchased, the launch frequency can be increased, more men can work full time on repairs to further improve reliability and, most of all, the markets the MD service can grow to a higher volume. 
+Thus potentially even only one major lunar MD, if it is of the CAM architecture, is required to truly unlock the commercial potential of lunar industrialisation.
 
 Absolutely no AI was used in the making of this project
