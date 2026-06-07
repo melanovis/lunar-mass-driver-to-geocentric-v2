@@ -9,4 +9,10 @@ The issue with this however is that orbital conditions are constantly changing, 
 
 These MDR transits are multiburn and follow elliptical restricted 3 body problem (ER3BP) dynamics both for the sake of simulation accuracy such that careful manoeuvring is available such that MDRs can preform expensive inclination changes at Δv-efficient altitudes and exploit effects like lunar gravity assists.
 
+Here its suspected that 1200km as the minimum altitude range where debris mitigation becomes substantially simpler and less dramatic, with the target orbit being picked at an altitude of 1211.2 km which is semi-lunar synchronous to the lunar nodal precession cycle. To decide the altitude for the parking orbit above the 1211.2km receiving station orbit, I sampled various orbits for the time and Δv required to hohmann and rendezvous, making sure to account for the small but notable inclination difference incurred by the differences in precession rates between the orbits. We then decided to just draw a line at a flat 100m/s to get a 1371.2 km altitude parking orbit where we’d only have to wait a maximum of 57.36 hours for the phasing to be right for rendezvous.
+
+In this simulation work the inclination (relative to earth's equator) of the LEO recieving station orbit was 28.59° which periodically aligns with the lunar orbital plane when its at Ω=90°. This periodic alignment opens the door to very substantial Δv savings but only for a short period, though definitely enough to bring down the mean. Here its additionally assumed the receiving station can change its inclination to 18.3 degrees very gradually over a 9.3 year period (to follow the lunar nodal precession cycle which occurs on an 18.6 year period due to the influence of the sun) which is considered doable due to the Δv provided to the station from unburnt propellent margins from the received MDRs. 
+
+Due to the earth's equatorial oblateness, the target orbit is constantly precessing which is the primary issue this simulation projected is aimed at addressing. 
+
 No AI was used in the making of this project
