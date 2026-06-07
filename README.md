@@ -13,7 +13,7 @@ The issue with this however is that orbital conditions are constantly changing, 
 
 These MDR transits are multiburn and follow elliptical restricted 3 body problem (ER3BP) dynamics both for the sake of simulation accuracy such that careful manoeuvring is available such that MDRs can preform expensive inclination changes at Δv-efficient altitudes and exploit effects like lunar gravity assists.
 
-Here its suspected that 1200km as the minimum altitude range where debris mitigation becomes substantially simpler and less dramatic, with the target orbit being picked at an altitude of 1211.2 km which is semi-lunar synchronous to the lunar nodal precession cycle. To decide the altitude for the parking orbit above the 1211.2km receiving station orbit, I sampled various orbits for the time and Δv required to hohmann and rendezvous, making sure to account for the small but notable inclination difference incurred by the differences in precession rates between the orbits. We then decided to just draw a line at a flat 100m/s to get a 1371.2 km altitude parking orbit where we’d only have to wait a maximum of 57.36 hours for the phasing to be right for rendezvous.
+Here its suspected that 1200km as the minimum altitude range where long-term debris mitigation becomes substantially more plausible, with the target orbit being picked at an altitude of 1211.2 km which is semi-lunar synchronous to the lunar nodal precession cycle. To decide the altitude for the parking orbit above the 1211.2km receiving station orbit, I sampled various orbits for the time and Δv required to hohmann and rendezvous, making sure to account for the small but notable inclination difference incurred by the differences in precession rates between the orbits. We then decided to just draw a line at a flat 100m/s to get a 1371.2 km altitude parking orbit where we’d only have to wait a maximum of 57.36 hours for the phasing to be right for rendezvous.
 
 <img width="7702" height="2871" alt="Image" src="https://github.com/user-attachments/assets/d19f597d-3646-4630-a700-5f8ec782e29e" />
 
@@ -36,7 +36,7 @@ The following animation takes a look at how changing even a single one of these 
 To gauge how an MDR transit constellation will behave for a single MD we must hold orientation and location fixed as the MD cannot change its aim or move along the lunar surface given its scale. But then how will we know if there are spots on the lunar surface which are preferred by the orbital mechanics of cislunar transiting? 
 In order to answer this question we decided to split this simulation project into two phases. The first phase, which we’ll call the ‘allocation phase’ would have far less samples and leave these parameters free. We’ll then look at where the optimisation system places the MDs for each true anomaly-omega sample and if any patterns or rough regions emerge we’ll use those, along with further terrain feature justifications to pick a location and orientation for the more major ‘fixed phase’ where only the ejection velocity will be a free parameter.
 
-Additional important constraints to note:
+Additional important constraints to note for the allocation phase:
 - Ejection velocity was constrained to a range of 2.32 - 3.5km/s.
 - Longitude was constrained between -90 and 90 degrees, ie the earth-facing side of the moon so communications can reliably remain unbroken
 - Azimuth was constrained between 0 and 180 degrees, meaning the MDs only fire retrograde in this phase
@@ -65,9 +65,13 @@ So how are these sites found? This project looks at nine remote-sensing abundanc
 
 <img width="4836" height="2068" alt="Image" src="https://github.com/user-attachments/assets/6cc8b7fe-d4f6-43fc-a582-8c58fdd56290" />
 
-Anyways this is far better and more specific than the results of the allocation phase so we went with these for the major fixed simulation phase. We decided to pick kepler abundantia tertia (or KAT) as the launch spot. 
+Anyways this is far better and more specific than the results of the allocation phase so we went with these for the major fixed simulation phase. We decided to pick kepler abundantia tertia (or KAT) as the launch spot which sits at -34.78° longitude, 9.38° latitude. 
+For the orientation of the gun in the fixed simulation phase, the allocation phase elevations were averaged to 0.0148° and the azimuth was set at 45° such that the ejection velocity can be used to control the degree to which our ejection trajectories are retrograde or inclined to the lunar orbital plane upon departure from the lunar sphere of influence (SOI).
 
-parameters
+Following the allocation phase simulations, it was suspected that a Δv of 4km/s would be imposed as a limit for the fixed phase, if an optimised transit could not fall under 4km/s (while also staying within a T/W ratio boundary) then it would be discarded to search elsewhere in the search space.
+
+The allocation phase was sampled on a rather low resolution, only 64 transits for it. In this fixed phase I decided to sample the lunar ν and target orbit Ω landscape more finely to confirm the validity of the 4km/s assumption. We optimized 270 multiburn transits, ten different Ω samples for each day of the lunar orbit. 
+
 <img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/f475c505-61a3-412f-962a-739d34018082" />
 
 histogram
