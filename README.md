@@ -10,7 +10,12 @@ These are rockets which travel across cislunar space, executing multiple burns t
 I wanted to show a continuous access massdriver (CAM) was possible, this is a system which can send material to some LEO orbit (where the first large commercial markets will be) no matter the orbital conditions such that mass-to-LEO throughput can be completely maximized (thus beating limited throughput alternatives such as OTVs). A railway in freefall.
 The issue with this however is that orbital conditions are constantly changing, so to get a good picture into how these MDRs need to be scaled and how they should behave, we need to optimize multiple transits across the most influential orbital conditions. In this case it was determined that these should be the lunar orbital true anomaly (ν) and the longitude of the ascending node (Ω) of the LEO target orbit. For computational reasons I did not look to sweep across the lunar nodal precession and instead held it at the angle which would demand the most inclination change work to efficiently transit down to LEO.
 
-These MDR transits are multiburn and follow elliptical restricted 3 body problem (ER3BP) dynamics both for the sake of simulation accuracy such that careful manoeuvring is available such that MDRs can preform expensive inclination changes at Δv-efficient altitudes and exploit effects like lunar gravity assists.
+Here i've thrown together a little animation showing what the changing lunar ν and target orbit Ω looks like as the earth and the moon spin eccentricly around the earth-moon barycenter. Here the scales and rotational rates are very much exaggerated but the obliquities and inclinations are representative. Note here that no precession of the lunar orbit occurs, only of the target orbit.
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/39c79bdb-2cf7-46b2-af95-24812d7210d7" width="100%" controls></video>
+</p>
+
+These MDR transits are multiburn (meaning more burns than the necessary rendezvous one occurs) and follow elliptical restricted 3 body problem (ER3BP) dynamics both for the sake of simulation accuracy such that careful manoeuvring is available such that MDRs can preform expensive inclination changes at Δv-efficient altitudes and exploit effects like lunar gravity assists.
 
 Here its suspected that 1200km as the minimum altitude range where long-term debris mitigation becomes substantially more plausible, with the target orbit being picked at an altitude of 1211.2 km which is semi-lunar synchronous to the lunar nodal precession cycle. To decide the altitude for the parking orbit above the 1211.2km receiving station orbit, I sampled various orbits for the time and Δv required to hohmann and rendezvous, making sure to account for the small but notable inclination difference incurred by the differences in precession rates between the orbits. We then decided to just draw a line at a flat 100m/s to get a 1371.2 km altitude parking orbit where we’d only have to wait a maximum of 57.36 hours for the phasing to be right for rendezvous.
 
@@ -72,7 +77,7 @@ Following the allocation phase simulations, it was suspected that a Δv of 4km/s
 
 The allocation phase was sampled on a rather low resolution, only 64 transits for it. In this fixed phase I decided to sample the lunar ν and target orbit Ω landscape more finely to confirm the validity of the 4km/s hypothesis. We optimized 270 multiburn transits, ten different Ω samples for each day of the lunar orbit. 
 
-The following animations show these transits all together.
+The following animations show these transits all together (incase anyone wants to look at any specific transits, in the 'pictures' folder i've included a render for each).
 
 <p align="center">
   <video src="https://github.com/user-attachments/assets/375071bb-a4b3-413d-8a22-57188a304904" width="100%" controls></video>
@@ -95,9 +100,11 @@ To reach a 1371.2 km target orbit in LEO when launching anytime from KAT on the 
 
 *yes the histogram has T/W entries above this. This large T/W requirement comes from the speed the final LEO circularisation burn has to be completed in. I picked a 3 degree impulsive assumption for this, which is probably too conservative. Instead a 5 degree impulsive assumption is more likely. Furthermore this T/W limit seems to be something we have a lot more optimisation control over than Δv, so it seems very reasonable that future real-world optimisation projects can confirm that a maximum T/W of 4 is okay. 
 
-This shows that a lunar CAM is very much possible. Mass can be constantly exported to the emerging macro-infrastructure markets of LEO constantly like a railway like. These are very much nontrivial Δv and T/W figures, but they are not outside the reasonable bounds of application for something like a potentially radically inexpensive aluminum oxygen thruster operating at an isp of something like 230 seconds. 
+This shows that a lunar CAM is very much possible. Mass can be constantly exported to the emerging macro-infrastructure markets of LEO constantly like a railway like. These are very much nontrivial Δv and T/W figures, but they are not outside the reasonable bounds of application for something like a potentially radically inexpensive mass-produced Al+O2 thruster operating at an isp of something like 230 seconds. 
 
 Furthermore these results are the worst they’re ever going to be. As markets move further out of LEO, into MEO and beyond its reasonable to expect the CAM-MDR Δv landscape to become even less. The rockets will require smaller mass ratios meaning it becomes even more inexpensive to ship material as the market evolves over time. In multiburn the same MD can additionally service a whole multitude of orbital ranges too, even providing transits out into deep space by carefully controlling the ejection velocity such that transiting rockets re-enter the lunar sphere of influence for an outgoing gravity assist which, again, can be done independent of orbital conditions. Thus the lunar MD is an asset which can only appreciate in value over time. As more powerplant and MDR manufacturing infrastructure can be purchased, the launch frequency can be increased, more men can work full time on repairs to further improve reliability and, most of all, the markets the MD service can grow to a higher volume. 
 Thus potentially even only one major lunar MD, if it is of the CAM architecture, is required to truly unlock the commercial potential of lunar industrialisation.
 
-Absolutely no AI was used in the making of this project
+Absolutely no AI was used in this project
+
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/e3e93130-c005-43b6-9c3a-e234b6221c79" />
