@@ -38,5 +38,29 @@ Additional important constraints to note:
 - No aerobraking is incorporated and MDRs will not reach below an altitude of 200km. This has been done as aerobraking in any context other than a surface-descent (and in this case it's a skim across the highest, thinnest part of the atmosphere) is almost impossible to accurately model. Furthermore there are political implications regarding what occurs if the MDRs accidentally deorbit which are unattractive.  This 200km collision boundary also applies to the moon, for which its unpreferable to get too close to due to the orbital perturbations potentially introduced by lunar masscons.
 
 For the allocation phase, 64 samples (transits) were optimised, which revealled many bugs and had to be restarted twice. These 64 samples are for a range of 8 lunar ν values across 8 target orbit Ω values.
+The resulting transits are shown all together in this animation, note the red vectors indicate the direction of burns.
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/c887a5b7-3af5-41e3-af79-ee0dd0c395b2" width="100%" controls></video>
+</p>
+
+allocation phase results
+<img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/d9c5ac32-0736-4b53-a75b-013e4f76a621" />
+<img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/906670dc-3374-4a6a-b804-2e44176b55c7" />
+
+
+
+prime abundance spots
+<img width="4836" height="2068" alt="Image" src="https://github.com/user-attachments/assets/6cc8b7fe-d4f6-43fc-a582-8c58fdd56290" />
+
+
+parameters
+<img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/f475c505-61a3-412f-962a-739d34018082" />
+
+histogram
+<img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/c31bd526-2cba-4850-af04-ba3903861afd" />
+
+
+
 
 No AI was used in the making of this project
