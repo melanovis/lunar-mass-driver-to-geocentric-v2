@@ -15,8 +15,28 @@ These MDR transits are multiburn and follow elliptical restricted 3 body problem
 
 Here its suspected that 1200km as the minimum altitude range where debris mitigation becomes substantially simpler and less dramatic, with the target orbit being picked at an altitude of 1211.2 km which is semi-lunar synchronous to the lunar nodal precession cycle. To decide the altitude for the parking orbit above the 1211.2km receiving station orbit, I sampled various orbits for the time and Δv required to hohmann and rendezvous, making sure to account for the small but notable inclination difference incurred by the differences in precession rates between the orbits. We then decided to just draw a line at a flat 100m/s to get a 1371.2 km altitude parking orbit where we’d only have to wait a maximum of 57.36 hours for the phasing to be right for rendezvous.
 
-In this simulation work the inclination (relative to earth's equator) of the LEO recieving station orbit was 28.59° which periodically aligns with the lunar orbital plane when its at Ω=90°. This periodic alignment opens the door to very substantial Δv savings but only for a short period, though definitely enough to bring down the mean. Here its additionally assumed the receiving station can change its inclination to 18.3 degrees very gradually over a 9.3 year period (to follow the lunar nodal precession cycle which occurs on an 18.6 year period due to the influence of the sun) which is considered doable due to the Δv provided to the station from unburnt propellent margins from the received MDRs. 
+<img width="7702" height="2871" alt="Image" src="https://github.com/user-attachments/assets/d19f597d-3646-4630-a700-5f8ec782e29e" />
 
-Due to the earth's equatorial oblateness, the target orbit is constantly precessing which is the primary issue this simulation projected is aimed at addressing. 
+In this simulation work the inclination (relative to earth's equator) of the LEO recieving station orbit was 28.59° which periodically aligns with the lunar orbital plane when its at Ω=90°. This periodic alignment opens the door to very substantial Δv savings but only for a short period, though definitely enough to bring down the mean. Here its additionally assumed the receiving station can change its inclination to 18.3 degrees very gradually over a 9.3 year period (to follow the lunar nodal precession cycle which occurs on an 18.6 year period due to the influence of the sun) which is considered doable due to the Δv provided to the station from unburnt propellent margins from the received MDRs. 
+Just as an additional note, the precession of the target orbit is not caused by the influence of the sun but instead the earth's equatorial oblateness.
+
+To begin designing a transit constellation, we need to look at the first part of their journey, that being the ejection from the lunar MD. 
+A MD is an enormous asset, an investment comparable to a major continental railway. Ideally we should not be building multiple of them, in the bootstrapping period, instead we should be clever with the design and placement of a singular asset such that it can service the market regardless of the time. 
+Informing this decision can only partially be done by orbital mechanics alone. Many more factors are required to justify the placement of an MD. But with that being noted, lets detour for a moment to discuss what parameters we have available to us for just the MD part of a MDR transit simulation. 
+These include:
+- Ejection velocity (v), the speed of material leaving the end of the MD relative to the stationary lunar surface.
+- Orientation, or the azimuth (θ) and elevation (ε) we can point an MD at.
+- Location, the latitude (φ) and longitude (λ) on the moon where we place the mouth of the MD. 
+To gauge how an MDR transit constellation will behave for a single MD we must hold orientation and location fixed as the MD cannot change its aim or move along the lunar surface given its scale. But then how will we know if there are spots on the lunar surface which are preferred by the orbital mechanics of cislunar transiting? 
+In order to answer this question we decided to split this simulation project into two phases. The first phase, which we’ll call the ‘allocation phase’ would have far less samples and leave these parameters free. We’ll then look at where the optimisation system places the MDs for each true anomaly-omega sample and if any patterns or rough regions emerge we’ll use those, along with further terrain feature justifications to pick a location and orientation for the more major ‘fixed phase’ where only the ejection velocity will be a free parameter.
+
+Additional important constraints to note:
+- Ejection velocity was constrained to a range of 2.32 - 3.5km/s.
+- Longitude was constrained between -90 and 90 degrees, ie the earth-facing side of the moon so communications can reliably remain unbroken
+- Azimuth was constrained between 0 and 180 degrees, meaning the MDs only fire retrograde in this phase
+- Elevation was constrained to a maximum of 0.5 degrees
+- No aerobraking is incorporated and MDRs will not reach below an altitude of 200km. This has been done as aerobraking in any context other than a surface-descent (and in this case it's a skim across the highest, thinnest part of the atmosphere) is almost impossible to accurately model. Furthermore there are political implications regarding what occurs if the MDRs accidentally deorbit which are unattractive.  This 200km collision boundary also applies to the moon, for which its unpreferable to get too close to due to the orbital perturbations potentially introduced by lunar masscons.
+
+For the allocation phase, 64 samples (transits) were optimised, which revealled many bugs and had to be restarted twice. These 64 samples are for a range of 8 lunar ν values across 8 target orbit Ω values.
 
 No AI was used in the making of this project
