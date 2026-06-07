@@ -20,4 +20,3 @@ In this simulation work the inclination (relative to earth's equator) of the LEO
 Due to the earth's equatorial oblateness, the target orbit is constantly precessing which is the primary issue this simulation projected is aimed at addressing. 
 
 No AI was used in the making of this project
-(Times New Roman style).}$
