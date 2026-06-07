@@ -1,4 +1,12 @@
 # lunar-mass-driver-to-geocentric-v2
 
+This was a project aimed at illuminating what Δv and T/W requirements are imposed on commercial rockets travelling from the moon to the earth. Specifically these are rockets which are launched from a lunar massdriver (MD) or some equivalent lifting vehicle. This is the third in two previous attempts to understand this problem which failed to consider various orbital effects such as lunar libration, the eccentricty of the lunar orbit and precession of the target orbit.
+
+These are rockets which travel across cislunar space, executing multiple burns to eventually arrive at a circular parking orbit. After remaining there for some time they burn to rendezvous with a recieving station where their cargo payloads are seperated and the rockets are melted down into useful mass. This is the unidirectional MDR architecture, which is suspected as economically plausible due to the substantially reduced cost and complexity required for these lunar-ISRU derived rockets (likely Al+O2 redox) which do not need to negotiate earth's highly disagreeable atmosphere. These are more comparable to flying shipping containers than the fiery launch vehicles of our current period.
+
+I wanted to show a continuous access massdriver (CAM) was possible, this is a system which can send material to some LEO orbit (where the first large commercial markets will be) no matter the orbital conditions such that mass-to-LEO throughput can be completely maximized (thus beating limited throughput alternatives such as OTVs). A railway in freefall.
+The issue with this however is that orbital conditions are constantly changing, so to get a good picture into how these MDRs need to be scaled and how they should behave, we need to optimize multiple transits across the most influential orbital conditions. In this case it was determined that these should be the lunar orbital true anomaly (ν) and the longitude of the ascending node (Ω) of the LEO target orbit. For computational reasons I did not look to sweep across the lunar nodal precession and instead held it at the angle which would demand the most inclination change work to efficiently transit down to LEO.
+
+These MDR transits are multiburn and follow elliptical restricted 3 body problem (ER3BP) dynamics both for the sake of simulation accuracy such that careful manoeuvring is available such that MDRs can preform expensive inclination changes at Δv-efficient altitudes and exploit effects like lunar gravity assists.
 
 No AI was used in the making of this project
