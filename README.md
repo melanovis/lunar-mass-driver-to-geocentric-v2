@@ -91,6 +91,7 @@ To reach a 1371.2 km target orbit in LEO when launching anytime from KAT on the 
 - 2.33 - 3 km/s ejection velocity
 - Δv in the range of 3-4 km/s (not including margins or additional 100m/s Δv to rendezvous with the receiving station).
 - The capacity to throttle up to a T/W ratio of 4*
+
 *yes the histogram has T/W entries above this. This large T/W requirement comes from the speed the final LEO circularisation burn has to be completed in. I picked a 3 degree impulsive assumption for this, which is probably too conservative. Instead a 5 degree impulsive assumption is more likely. Furthermore this T/W limit seems to be something we have a lot more optimisation control over than Δv, so it seems very reasonable that future real-world optimisation projects can confirm that a maximum T/W of 4 is okay. 
 
 This shows that a lunar continous access massdriver (CAM) is very much possible. Mass can be constantly exported to the emerging macro-infrastructure markets of LEO constantly like a railway like. These are very much nontrivial Δv and T/W figures, but they are not outside the reasonable bounds of application for something like a potentially radically inexpensive aluminum oxygen thruster operating at an isp of something like 230 seconds. 
