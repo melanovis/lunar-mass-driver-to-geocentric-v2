@@ -1,5 +1,9 @@
 # lunar-mass-driver-to-geocentric-v2
 
+
+
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/53b61856-a958-4223-b21c-2041cd78b08a" />
+
 This was a project aimed at illuminating what Δv and T/W requirements are imposed on commercial rockets travelling from the moon to the earth. Specifically these are rockets which are launched from a lunar massdriver (MD) or some equivalent lifting vehicle. This is the third in two previous attempts to understand this problem which failed to consider various orbital effects such as lunar libration, the eccentricty of the lunar orbit and precession of the target orbit.
 
 These are rockets which travel across cislunar space, executing multiple burns to eventually arrive at a circular parking orbit. After remaining there for some time they burn to rendezvous with a recieving station where their cargo payloads are seperated and the rockets are melted down into useful mass. This is the unidirectional MDR architecture, which is suspected as economically plausible due to the substantially reduced cost and complexity required for these lunar-ISRU derived rockets (likely Al+O2 redox) which do not need to negotiate earth's highly disagreeable atmosphere. These are more comparable to flying shipping containers than the fiery launch vehicles of our current period.
@@ -16,3 +20,4 @@ In this simulation work the inclination (relative to earth's equator) of the LEO
 Due to the earth's equatorial oblateness, the target orbit is constantly precessing which is the primary issue this simulation projected is aimed at addressing. 
 
 No AI was used in the making of this project
+(Times New Roman style).}$
