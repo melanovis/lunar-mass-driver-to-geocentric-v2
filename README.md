@@ -86,6 +86,10 @@ The following animations show these transits all together (incase anyone wants t
   <video src="https://github.com/user-attachments/assets/180306aa-bd20-4a7c-95eb-9f29c3fec401" width="100%" controls></video>
 </p>
 
+Heres a link to a video of all these transits collected together.
+
+[![video repository](https://img.youtube.com/vi/f52EZ-U9pug/0.jpg)](https://www.youtube.com/watch?v=f52EZ-U9pug)
+
 This plot shows the primary high-level parameters of these multiburn transits, proving the hypothesis of 4km/s being a limit for continuous access to LEO.
 <img width="5760" height="2975" alt="Image" src="https://github.com/user-attachments/assets/f475c505-61a3-412f-962a-739d34018082" />
 
